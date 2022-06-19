@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/world.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/header.css">
+</head>
+<body>
+    <div id="asheader"></div>
+    <div id="navbar"></div>
+        <!-- TOP PART -->
+
+        <div id="outerDiv">
+            <div id="leftDiv">
+                <h2>ENTERTAINMENT</h2>
+            </div>
+            <div id="middleDiv"></div>
+            <div id="rightDiv">
+                <div id="topEmptyDiv"></div>
+                <div id="bottomDiv">
+                    <h2>MOVIE REVIEWS</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BOTTOM PART -->
+
+           <!-- galary  -->
+    <div id="galary">
+        <div class="f_galary">
+             <h2>GALLERY</h2>
+        </div>
+        <div class="s_galary">
+             <h2>MORE GALLERIES</h2>
+        </div>
+   </div>
+
+   <!-- bollywood  -->
+   <div id="p_bollywood">
+    <h2>Bollywood</h2>
+    <div id="bollywood">
+    
+    </div>
+   </div>
+
+   <!-- Hollywood  -->
+   <div id="p_hollywood">
+    <h2>HOLLYWOOD</h2>
+    <div id="u_hollywood">
+    
+    </div>
+    <div id="l_hollywood">
+    
+    </div>
+</div>
+
+<!-- Telivision  -->
+<div id="p_television">
+    <h2>TELEVISION</h2>
+    <div id="television">
+    
+    </div>
+   </div>
+
+      <!-- Music  -->
+      <div id="p_music">
+        <h2>MUSIC</h2>
+        <div id="u_music">
+        
+        </div>
+        <div id="l_music">
+        
+        </div>
+    </div>
+    <!-- tollywood  -->
+    <div id="p_tollywood">
+        <h2>TOLLYWOOD</h2>
+        <div id="tollywood">
+        
+        </div>
+       </div>
+    <!-- kollywood  -->
+    <div id="p_kollywood">
+        <h2>KOLLYWOOD</h2>
+        <div id="u_kollywood">
+        
+        </div>
+        <div id="l_kollywood">
+        
+        </div>
+    </div>
+
+    
+<!-- SANDALWOOD  -->
+<div id="p_sandalwood">
+    <h2>SANDALWOOD</h2>
+    <div id="sandalwood">
+    
+    </div>
+   </div>
+
+   <!-- MOLLYWOOD -->
+   <div id="p_mollywood">
+    <h2>MOLLYWOOD</h2>
+    <div id="u_mollywood">
+    
+    </div>
+    <div id="l_mollywood">
+    
+    </div>
+  </div>
+
+  <!-- theatre -->
+
+  <div id="p_theatre">
+    <h2>THEATRE</h2>
+    <div id="theatre">
+    
+    </div>
+   </div> 
+    <footer id="as_footer"></footer>
+</body>
+<script type="module">
+
+        import {fetchData} from "./components/index.js"
+
+        
+        // const apikey3=`d5517085875846b9ba2c2cbb522dc5d4`
+        // const apikey3=`a4b263da6c6c4f1ab7f29e452bc9d108`
+        // const apikey3=`bf6c4661eaeb4853a23a5aa81dd3b8cf`
+        // const apikey3=`5de76b328d6d4903ba81b3dd648ff3ba`
+        const apikey3=`76abf9a091394214a253dfa00f1f6e2c`
+
+        let query="bollywood"
+        let query2="tollywood"
+
+        let url2=`https://newsapi.org/v2/everything?q=${query}&apikey=${apikey3}`
+        let url3=`https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${apikey3}`
+        let url4=`https://newsapi.org/v2/everything?q=${query2}&apikey=${apikey3}`
+
+        let data=await fetchData(url2)
+        let dataM=await fetchData(url3)
+        let dataR=await fetchData(url4)
+    ///left part
+    let appendData=(arr)=>{
+            let display=document.getElementById("leftDiv")
+                for(let i=0;i<2;i++){
+                    let DIV=document.createElement("div")
+                    DIV.setAttribute("class","news")
+                    let image=document.createElement('img')
+                    let H2=document.createElement("h2")
+                    let p=document.createElement("p")
+                   
+
+                    image.src= arr[i].urlToImage
+                    H2.innerText=arr[i].title 
+                    p.innerText=arr[i].description
+                   
+                    DIV.append(image,H2,p)
+                    display.append(DIV)
+                    DIV.addEventListener("click",()=>{
+                        storeData(arr[i])
+                    })
+                }
+
+               let storeData=(elem)=>{
+                    localStorage.setItem("detailNews",JSON.stringify(elem))
+                    window.location.href="newsdetails.html"
+               } 
+        }
+    appendData(data.articles)
+    
+    ////middle part
+    let showDataM=(arr,container)=>{
+    
+        for(let i=0;i<=6;i++){
+        if(arr[i].urlToImage===null||arr[i].title===null){
+
+            continue;
+        }
+        let DIV=document.createElement("div")
+        DIV.setAttribute("class","newsM")
+        let image=document.createElement("img")
+        let  H5=document.createElement("h3")
+        
+        image.src=arr[i].urlToImage
+        H5.innerText=arr[i].title
+        
+    
+            DIV.append(image,H5)
+            container.append(DIV)
+            DIV.addEventListener("click",()=>{
+                        storeData(arr[i])
+                    })
+
+        }
+        let storeData=(elem)=>{
+                    localStorage.setItem("detailNews",JSON.stringify(elem))
+                    window.location.href="newsdetails.html"
+               } 
+    
+    }
+        let container=document.getElementById("middleDiv")
+        showDataM(dataM.articles,container)
+
+////right part
+    let showDataR=(arr,container)=>{
+    
+    for(let i=0;i<6;i++){
+    if(arr[i].urlToImage===null||arr[i].title===null){
+
+        continue;
+    }
+    let DIV=document.createElement("div")
+    DIV.setAttribute("class","newsR")
+    let textDiv=document.createElement("div")
+    let image=document.createElement("img")
+    let  H5=document.createElement("h3")
+    let H3=document.createElement("h2")
+   
+    
+    H3.innerText=`✰✰✰✰`;
+    H3.style.color="yellow"
+    image.src=arr[i].urlToImage
+    H5.innerText=arr[i].title
+    
+        textDiv.append(H5,H3)
+        DIV.append(textDiv,image)
+        container.append(DIV)
+        DIV.addEventListener("click",()=>{
+                        storeData(arr[i])
+                    })
+
+    }
+    let storeData=(elem)=>{
+                    localStorage.setItem("detailNews",JSON.stringify(elem))
+                    window.location.href="newsdetails.html"
+               } 
+
+}
+let containerR=document.getElementById("bottomDiv")
+showDataR(dataR.articles,containerR)
+
+        //console.log(data)
+
+    //////BOTTOM JS/////////
+// let base_url="https://newsapi.org/v2/top-headlines?country=in&category=entertainment&q=gallery&apiKey=95d1fbec7675485aba5f17e941467b38"
+
+
+//const apikey3="95d1fbec7675485aba5f17e941467b38"
+//   const apikey3="25b04ade42f64810b66bdd7ebf4be413"
+// const apikey3 ="6aa74a37541a4b0c88dbe661ec2f72c4"
+
+import {getFetchData,append,typeAppend,lowAppend,galary_s_append,galary_f_append} from "./components/fetch.js"
+
+
+  let galary = async() => {
+    const gal_url = `https://newsapi.org/v2/top-headlines?country=in&category=entertainment&q=bollywood&apiKey=${apikey3}`
+
+     let data=await getFetchData(gal_url);
+
+     let box=document.querySelector(".f_galary")
+     galary_f_append(data,box)
+
+     let container=document.querySelector(".s_galary")
+     galary_s_append(data,container)
+     
+}
+  galary()
+
+
+// ########### bollywood ########## 
+
+let bollywood_func =async () =>{
+    const bolly_url = `https://newsapi.org/v2/everything?q=bollywood&apiKey=${apikey3}`
+
+     let data =await getFetchData(bolly_url)
+
+    let container=document.getElementById("bollywood")
+    append(data,container)
+}
+bollywood_func()
+
+// ####### hollywood ########## 
+let hollywood_func = async () =>{
+    const hollywood_url=`https://newsapi.org/v2/everything?q=hollywood&apiKey=${apikey3}`
+
+    let data = await getFetchData(hollywood_url)
+
+    let box = document.getElementById("u_hollywood");
+    typeAppend(data,box)
+    let container = document.getElementById("l_hollywood");
+    lowAppend(data,container)
+}
+hollywood_func()
+
+// ######### television ########### 
+let television_func =async () =>{
+    const tele_url = `https://newsapi.org/v2/top-headlines?country=in&category=entertainment&q=tv&apiKey=${apikey3}`
+
+     let data =await getFetchData(tele_url)
+
+    let container=document.getElementById("television")
+    append(data,container)
+}
+television_func()
+
+// ####### music ##### 
+
+let music_func = async () =>{
+    const music_url=`https://newsapi.org/v2/everything?q=indian%20music&apiKey=${apikey3}`
+
+    let data = await getFetchData(music_url)
+
+    let box = document.getElementById("u_music");
+    typeAppend(data,box)
+    let container = document.getElementById("l_music");
+    lowAppend(data,container)
+}
+music_func()
+
+
+// ########### tollywood ############ 
+
+
+let tollywood_func =async () =>{
+    const tolly_url = `https://newsapi.org/v2/everything?q=tollywood&apiKey=${apikey3}`
+
+     let data =await getFetchData(tolly_url)
+
+    let container=document.getElementById("tollywood")
+    append(data,container)
+}
+tollywood_func()
+
+// ######## kollywood ############ 
+let kollywood_func = async () =>{
+    const kollywood_url=`https://newsapi.org/v2/everything?q=kollywood&apiKey=${apikey3}`
+
+    let data = await getFetchData(kollywood_url)
+
+    let box = document.getElementById("u_kollywood");
+    typeAppend(data,box)
+    let container = document.getElementById("l_kollywood");
+    lowAppend(data,container)
+}
+kollywood_func()
+
+// ########## sandalwood ########### 
+
+let sandalwood_func =async () =>{
+    const tolly_url = `https://newsapi.org/v2/everything?q=sandalwood&apiKey=${apikey3}`
+
+     let data =await getFetchData(tolly_url)
+
+    let container=document.getElementById("sandalwood")
+    append(data,container)
+}
+sandalwood_func()
+
+
+//############ MOLLYWOOD ############# 
+
+let mollywood_func = async () =>{
+    const mollywood_url=`https://newsapi.org/v2/everything?q=mollywood&apiKey=${apikey3}`
+
+    let data = await getFetchData(mollywood_url)
+
+    let box = document.getElementById("u_mollywood");
+    typeAppend(data,box)
+    let container = document.getElementById("l_mollywood");
+    lAppend(data,container)
+}
+mollywood_func()
+
+
+let lAppend = (data,container) =>{
+
+    for(let i=3; i<7; i++){
+         let div=document.createElement("div");
+         div.setAttribute("class","lowerSec")
+
+         let Image=document.createElement("img");
+         Image.src=data[i].urlToImage;
+
+        let tilte =document.createElement("h3");
+        tilte.innerText=data[i].title;
+
+        div.append(Image,tilte);
+
+        container.append(div)
+
+    }
+}
+
+
+// ########## theatre ################ 
+
+
+let theatre_func =async () =>{
+    const tolly_url = `https://newsapi.org/v2/everything?q=india%20theatre&apiKey=${apikey3}`
+
+     let data =await getFetchData(tolly_url)
+
+    let container=document.getElementById("theatre")
+    append(data,container)
+}
+theatre_func()
+
+
+
+
+
+
+</script>
+</html>
+<script src="./scripts/icon.js"></script>
+<script src="./scripts/sidepanel.js"></script>
+<script type="module">
+        import { navbar } from "./comp/navbar.js";
+  import { footer } from "./comp/footer.js";
+  import { header } from "./comp/header.js";
+  let nav = (document.getElementById("navbar").innerHTML = navbar());
+  let foot = (document.getElementById("as_footer").innerHTML = footer());
+  let head = (document.getElementById("asheader").innerHTML = header());
+</script>

@@ -1,0 +1,122 @@
+/* galary part styling  */
+*{
+     font-family: Arial, Helvetica, sans-serif;
+}
+p{
+    color: rgba(0, 0, 0, 0.745);
+}
+#galary{
+    background-color: rgba(128, 128, 128, 0.174);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: flex;
+    padding: 20px 5px;
+}
+.f_galary{
+   width: 60%;
+   margin: auto;
+   margin-top: 0px;
+}
+.s_galary{
+   width: 35%;
+   margin: auto;
+}
+.s_galary>h2{
+     border-bottom: 3px solid red;
+     display: inline-block;
+     margin-bottom: 10px;
+}
+.f_galary>h2{
+     border-bottom: 3px solid red;
+     display: inline-block;
+     margin-bottom: 10px;
+}
+.f_galary>div>img{
+    width: 100%;
+   height: 100%;
+
+}
+
+.s_galary_child{
+    display: flex;
+    margin-top: 10px;
+}
+.s_galary_child:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.s_galary_child>img{
+    width: 30%;
+    height: 100px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.s_galary_child>p{
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 17px;
+}
+
+/* neighbours section styling  */
+
+#p_neighbours,#p_east,#p_europe,#p_asia,#p_america,#p_africa,#p_australia,#p_bollywood,#p_hollywood,#p_television,#p_music,#p_tollywood,#p_kollywood,#p_sandalwood,#p_mollywood,#p_theatre,#p_politics,#p_affairs,#p_crime,#p_other,#p_cricket,#p_football,#p_tennis,#p_badminton,#p_sports,#p_mobile,#p_gadgets,#p_tech,#p_telengana,#p_andrapradesh,#p_tamilnadu,#p_karnataka,#p_kerala,#p_fashion,#p_health,#p_culture,#p_food,#p_relat,#p_env,#p_book,#p_trv,#p_viral,#p_focus{
+    width: 90%;
+    margin: auto;
+   margin-top: 40px; 
+   border-top: 2px solid grey;
+   border-bottom: 2px solid grey;
+   margin-bottom: 40px;
+}
+#p_neighbours>h2,#p_east>h2,#p_europe>h2,#p_asia>h2,#p_america>h2,#p_africa>h2,#p_australia>h2,#p_bollywood>h2,#p_hollywood>h2,#p_television>h2,#p_music>h2,#p_tollywood>h2,#p_kollywood>h2,#p_sandalwood>h2,#p_mollywood>h2,#p_theatre>h2,#p_politics>h2,#p_affairs>h2,#p_crime>h2,#p_other>h2,#p_cricket>h2,#p_football>h2,#p_tennis>h2,#p_badminton>h2,#p_sports>h2,#p_mobile>h2,#p_gadgets>h2,#p_tech>h2,#p_telengana>h2,#p_andrapradesh>h2,#p_tamilnadu>h2,#p_karnataka>h2,#p_kerala>h2,#p_fashion>h2,#p_health>h2,#p_culture>h2,#p_food>h2,#p_relat>h2,#p_env>h2,#p_book>h2,#p_trv>h2,#p_viral>h2,#p_focus>h2{
+    border-bottom: 3px solid red;
+    display: inline-block;
+}
+
+
+#neighbours,#east,#europe,#australia,#u_asia,#u_america,#u_africa,#bollywood,#u_hollywood,#television,#u_music,#tollywood,#u_kollywood,#sandalwood,#u_mollywood,#theatre,#politics,#u_affairs,#crime,#u_other,#cricket,#u_football,#tennis,#u_badminton,#u_sports,#mobile,#u_gadgets,#u_tech,#telengana,#u_andrapradesh,#tamilnadu,#u_karnataka,#kerala,#fashion,#u_health,#culture,#u_food,#relat,#u_env,#book,#u_trv,#viral,#u_focus{
+    display: flex;
+    margin: auto;
+    background-color: rgba(128, 128, 128, 0.051);
+    padding: 0px 20px;
+}
+.neigh{
+    width: 23%;
+    margin: auto;
+   
+}
+
+.neigh>img{
+    width: 100%;
+    height: 150px
+}
+
+.neigh>h3{
+    margin-bottom: 40px;
+}
+
+
+
+/*########## asia lowersec styling ########### */
+
+#p_asia>#l_asia,#l_america,#l_africa,#l_hollywood,#l_music,#l_kollywood,#l_mollywood,#l_affairs,#l_other,#l_football,#l_badminton,#l_sports,#l_gadgets,#l_tech,#l_andrapradesh,#l_karnataka,#l_health,#l_food,#l_env,#l_trv,#l_focus{
+    display: flex;
+}
+.lowerSec{
+    display: flex;
+    width: 24%;
+    margin: auto;
+    padding: 0px 20px;
+}
+.lowerSec>img{
+    width: 30%;
+    height: 50px;
+}
+.lowerSec>h3{
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: -5px;
+}
+
+
+
