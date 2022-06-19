@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/world.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/header.css">
+</head>
+<body>
+    <div id="asheader">
+    </div>
+
+<div id="navbar">
+</div> 
+        <!-- TOP PART -->
+
+        <div id="outerDiv">
+            <div id="leftDiv">
+                <h2>WORLD</h2>
+            </div>
+            <div id="middleDiv"></div>
+            <div id="rightDiv">
+                <div id="topEmptyDiv"></div>
+                <div id="bottomDiv">
+                    <h2>MOST POPULAR</h2>
+                </div>
+            </div>
+        </div>
+
+       <!-- BOTTOM PART  -->
+        <!-- galary  -->
+     <div id="galary">
+        <div class="f_galary">
+             <h2>GALLERY</h2>
+        </div>
+        <div class="s_galary">
+             <h2>MORE GALLERIES</h2>
+        </div>
+    </div>
+
+   <!-- neighbours  -->
+    <div id="p_neighbours">
+        <h2>NEIGHBOURS</h2>
+        <div id="neighbours">
+        
+        </div>
+    </div>
+   <!-- asia  -->
+    <div id="p_asia">
+        <h2>ASIA</h2>
+        <div id="u_asia">
+        
+        </div>
+        <div id="l_asia">
+        
+        </div>
+    </div>
+
+    <!-- middle east  -->
+
+    <div id="p_east">
+        <h2>MIDDLE EAST</h2>
+        <div id="east">
+        
+        </div>
+    </div>
+    <!-- America  -->
+    <div id="p_america">
+        <h2>AMERICA</h2>
+        <div id="u_america">
+        
+        </div>
+        <div id="l_america">
+        
+        </div>
+    </div>
+  <!-- Europe  -->
+    <div id="p_europe">
+        <h2>EUROPE</h2>
+        <div id="europe">
+        
+        </div>
+    </div>
+  <!-- Africa  -->
+  <div id="p_africa">
+   <h2>AFRICA</h2>
+   <div id="u_africa">
+   
+   </div>
+   <div id="l_africa">
+   
+   </div>
+  </div>
+
+  <!-- Australia and Newzealand  -->
+  <div id="p_australia">
+   <h2>AUSTRALIA AND NEW ZEALAND</h2>
+   <div id="australia">
+   
+   </div>
+</div>
+<footer id="as_footer"></footer>
+    
+</body>
+
+</html>
+<script src="./scripts/icon.js"></script>
+<script src="./scripts/sidepanel.js">
+</script>
+<script type="module">
+  import {navbar} from "./comp/navbar.js"
+  import {footer} from "./comp/footer.js"
+  import{header} from "./comp/header.js"
+let nav =document.getElementById("navbar").innerHTML=navbar()
+let foot =document.getElementById("as_footer").innerHTML=footer()
+let head=document.getElementById("asheader").innerHTML=header()
+
+import {fetchData} from "./components/index.js"
+        import {appendData,showDataM,showDataR} from "./components/display.js"
+
+        // const apikeyR=`d5517085875846b9ba2c2cbb522dc5d4`
+        // const apikeyR=`a4b263da6c6c4f1ab7f29e452bc9d108`
+        // const apikeyR=`bf6c4661eaeb4853a23a5aa81dd3b8cf`
+        // const apikeyR=`76abf9a091394214a253dfa00f1f6e2c`
+        const apikeyR=`a4b263da6c6c4f1ab7f29e452bc9d108`
+
+        let query="international"
+        let query2="unicef"
+        let query3="america"
+
+        let url2=`https://newsapi.org/v2/everything?q=${query}&apikey=${apikeyR}`
+        let url3=`https://newsapi.org/v2/everything?q=${query3}&apikey=${apikeyR}`
+        let url4=`https://newsapi.org/v2/everything?q=${query2}&apikey=${apikeyR}`
+
+        let data=await fetchData(url2)
+        let dataM=await fetchData(url3)
+        let dataR=await fetchData(url4)
+    ///left part
+   let display=document.getElementById("leftDiv")
+   appendData(data.articles,display)
+    
+    ////middle part
+    
+        let container=document.getElementById("middleDiv")
+        showDataM(dataM.articles,container)
+
+    ////right part
+        
+    let containerR=document.getElementById("bottomDiv")
+    showDataR(dataR.articles,containerR)
+
+        //console.log(data)
+    
+    ////BOTTOM JS////
+    
+    import {getFetchData,append,typeAppend,lowAppend,galary_s_append,galary_f_append} from "./components/fetch.js"
+
+//  const apikeyR="9f395279e4304117b0e752ced7dec1a8"
+//  const apikeyR="95d1fbec7675485aba5f17e941467b38"
+//const apikeyR="25b04ade42f64810b66bdd7ebf4be413"
+
+let galary = async() => {
+    const gal_url = `https://newsapi.org/v2/everything?q=gallery&apiKey=${apikeyR}`
+
+     let data=await getFetchData(gal_url);
+    console.log(data)
+     let box=document.querySelector(".f_galary")
+     galary_f_append(data,box)
+
+     let container=document.querySelector(".s_galary")
+     galary_s_append(data,container)
+     
+ }
+  galary()
+
+
+
+//    neighbours part javascript code 
+
+let neighbours_func =async () =>{
+    const nei_url = `https://newsapi.org/v2/everything?q=neighbours&apiKey=${apikeyR}`
+
+     let data =await getFetchData(nei_url)
+
+    let container=document.getElementById("neighbours")
+    append(data,container)
+}
+neighbours_func()
+
+
+//    ##### Middle part javascript ######## 
+
+
+let east_func = async () =>{
+     const east_url=`https://newsapi.org/v2/everything?q=middle%20east&apiKey=${apikeyR}`
+
+     let data = await getFetchData(east_url)
+
+     let box=document.getElementById("east");
+     append(data,box)
+}
+east_func()
+
+// ########## EUROPE ######### 
+let europe_func = async () =>{
+    const europe_url=`https://newsapi.org/v2/everything?q=europe&apiKey=${apikeyR}`
+
+    let data = await getFetchData(europe_url)
+
+    let box = document.getElementById("europe");
+    append(data,box)
+}
+europe_func()
+
+// ######### Asia ####### 
+
+let asia_func = async () =>{
+    const asia_url=`https://newsapi.org/v2/everything?q=asia&apiKey=${apikeyR}`
+
+    let data = await getFetchData(asia_url)
+
+    let box = document.getElementById("u_asia");
+    typeAppend(data,box)
+    let container = document.getElementById("l_asia");
+    lowAppend(data,container)
+}
+asia_func()
+
+
+// ########### America ###### 
+
+let america_func = async () =>{
+    const america_url=`https://newsapi.org/v2/everything?q=america&apiKey=${apikeyR}`
+
+    let data = await getFetchData(america_url)
+
+    let box = document.getElementById("u_america");
+    typeAppend(data,box)
+    let container = document.getElementById("l_america");
+    lowAppend(data,container)
+}
+america_func()
+
+// ##########  Africa ############ 
+
+let africa_func = async () =>{
+    const africa_url=`https://newsapi.org/v2/everything?q=africa&apiKey=${apikeyR}`
+
+    let data = await getFetchData(africa_url)
+
+    let box = document.getElementById("u_africa");
+    typeAppend(data,box)
+    let container = document.getElementById("l_africa");
+    lowAppend(data,container)
+}
+africa_func()
+
+
+// ########## australia ##########
+
+let australia_func = async () =>{
+    const australia_url=`https://newsapi.org/v2/everything?q=AUSTRALIA%20AND%20NEW%20ZEALAND&apiKey=${apikeyR}`
+
+    let data = await getFetchData(australia_url)
+
+    let box = document.getElementById("australia");
+    append(data,box)
+}
+australia_func()
+ 
+
+
+</script>
+
