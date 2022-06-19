@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/job.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/header.css">
+    
+    <title>Jobs</title>
+    
+</head>
+<body>
+    <div id="asheader">
+    </div>
+    <div id="navbar">
+    </div> 
+    
+    <div id="bahutBada">
+    
+       
+       
+    <div id="badaDiv">
+        <u style="text-decoration-color:red ;"><h1>JOBS & EDUCATION</h1></u>
+    
+</div>
+    <div id="chotaDiv">
+        <u style="text-decoration-color:red "><h1 id="head">MOST POPULAR</h1></u>  
+    </div>
+
+</div>
+<footer id="as_footer">
+
+</footer>
+
+</body>
+</html>
+
+<script type="module">
+    
+  
+   
+  // const url="https://newsapi.org/v2/everything?q=${query}&apikey=bf6c4661eaeb4853a23a5aa81dd3b8cf"
+  //const url = "https://newsapi.org/v2/everything?q=education&apikey=bf6c4661eaeb4853a23a5aa81dd3b8cf"
+
+ // const apiKey=`bf6c4661eaeb4853a23a5aa81dd3b8cf`
+//   const apikey=`95d1fbec7675485aba5f17e941467b38`
+const apikey=`a4b263da6c6c4f1ab7f29e452bc9d108`
+  const url = `https://newsapi.org/v2/everything?q=jobs&apikey=${apikey}`
+
+   
+  async function schoolData(){
+   
+    try{
+
+        let res = await fetch (url)
+        let data= await res.json()
+        //console.log(data.articles)
+        appendSchool(data.articles)
+
+    }
+    catch(err){
+        console.log(err)
+
+    }
+}
+schoolData()
+
+function appendSchool(data){
+    data.forEach((ele)=>{
+
+        let divB= document.createElement("div")
+        divB.setAttribute("class", "divB")
+        
+
+        let divS1= document.createElement("div")
+        divS1.setAttribute("class", "divS1")
+        let divS2= document.createElement("div")
+        divS2.setAttribute("class", "divS2")
+
+        let image1= document.createElement("img")
+        image1.src=ele.urlToImage
+        image1.setAttribute("class","chutkaimage")
+        divS1.append(image1)
+
+        let h3 = document.createElement("h3")
+        h3.innerText=ele.title
+
+        let p= document.createElement("p")
+        p.innerText=ele.content
+        divS2.append(h3,p)
+
+        divB.append(divS1,divS2)
+        document.getElementById("badaDiv").append(divB)
+        
+        divB.addEventListener("click",function(){
+            storeData(ele)
+        })
+
+
+    })
+
+
+    function storeData(ele){
+
+        localStorage.setItem("detailNews",JSON.stringify(ele))
+        window.location.href="newsDetails.html"
+    }
+}
+
+
+
+const url1 = `https://newsapi.org/v2/everything?q=schools&apikey=${apikey}`
+
+
+
+
+async function jobData(){
+   
+   try{
+
+       let res = await fetch (url1)
+       let data= await res.json()
+       //console.log(data.articles)
+       appendJob(data.articles)
+
+   }
+   catch(err){
+       console.log(err)
+
+   }
+}
+jobData()
+
+function appendJob(data){
+   data.forEach((ele)=>{
+
+       let divS= document.createElement("div")
+       divS.setAttribute("class", "divS")
+
+       let divS3= document.createElement("div")
+       divS3.setAttribute("class", "divS3")
+       let divS4= document.createElement("div")
+       divS4.setAttribute("class", "divS4")
+
+       let image1= document.createElement("img")
+       image1.setAttribute("class","chutkaimage")
+       image1.src=ele.urlToImage
+       divS3.append(image1)
+
+       let h3 = document.createElement("h3")
+       h3.innerText=ele.title
+
+       
+     divS4.append(h3)
+
+       divS.append(divS3,divS4)
+       document.getElementById("chotaDiv").append(divS)
+
+   })
+
+
+}
+
+</script>
+<script src="./scripts/icon.js"></script>
+<script src="./scripts/sidepanel.js"></script>
+<script type="module">
+    import {navbar} from "./comp/navbar.js"
+  import {footer} from "./comp/footer.js"
+  import{header} from "./comp/header.js"
+let nav =document.getElementById("navbar").innerHTML=navbar()
+let foot =document.getElementById("as_footer").innerHTML=footer()
+let head=document.getElementById("asheader").innerHTML=header()
+</script>
