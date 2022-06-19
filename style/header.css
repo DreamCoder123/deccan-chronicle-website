@@ -1,0 +1,250 @@
+
+      .sidepanel {
+        height: 700px; /* Specify a height */
+        width: 0; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        background-color: rgb(238, 238, 238); /* Black*/
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 60px; /* Place content 60px from the top */
+      }
+     
+
+      /* When you mouse over the navigation links, change their color */
+      .sidepanel a:hover {
+        color: #f1f1f1;
+        background-color:rgba(0, 0, 0, 0.575)
+        
+      }
+      *{
+        font-family: 'Open Sans',sans-serif;
+      }
+      /* Style the button that is used to open the sidepanel */
+      .openbtn {
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #111;
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        /* position: fixed; */
+        top:8px;
+        left: 30px;
+      }
+
+      .openbtn:hover {
+        background-color: #444;
+      }
+      #asheader{
+        display: flex;
+        background-color: #111;
+        color: white;
+        height: 50px;
+        width: 100%;
+        position: sticky;
+        align-items: center;
+        justify-content: center;
+        top:0px;
+      }
+      
+      .fas
+      {
+        position: absolute;
+        left: 30px;
+        top: 10px;
+        color: #111;
+      }
+      #menulogo{
+        position: absolute;
+        left: 40px;
+        top: 20px;
+        width: 140px;
+        height: 40px;
+      }
+      #closebtn 
+      {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 220px;
+      }
+      #home-icon
+      {
+        width: 20px;
+        height: 20px;
+        
+        margin-left: 10px;
+      }
+      #bellicon{
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
+      #prayer{
+        color: #111;
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-top: 10px;
+
+      }
+      #asformat{
+        margin-left: 40px;
+        color: #111;
+      
+      }
+      text {
+        font-size: 15px;
+      }
+      .fa-angle-double-right{
+        font-size: 15px;
+      }
+      li{
+        margin-left: 10px;
+        margin-bottom: 20px;
+      }
+      ul{
+        color: rgb(238, 238, 238);;
+      }
+      a{
+        color: #111;
+        text-decoration: none;
+      }
+      #l-side-item{
+        display: flex;
+        height: auto;
+        margin-left: 10px;
+      }
+      #r-side-item{
+        display: flex;
+        margin-left: auto;
+      }
+      #headder-menu{
+        color: white;
+        margin-left: 5px;
+        /* margin-right: auto; */
+        /* font-size: 17px; */
+      }
+      @media screen and (max-width:1040px)
+      {
+        #headder-menu{
+          flex-wrap: wrap;
+          font-size: auto;
+        }
+      }
+    
+      @media screen and (max-width:900px)
+      {
+        #r-side-item{
+          flex-wrap: wrap;
+          font-size: auto;
+        }
+      }
+    
+     
+      
+
+      @media screen and (max-width: 900px) {
+        #asheader {
+          height: auto;
+          flex-wrap: wrap;
+          
+        }
+      }
+      @media screen and (max-width: 400px) {
+        #asheader {
+          height: auto;
+          flex-wrap: wrap;
+          /* align-items: flex-end; */
+        }
+      }
+      
+      .smediaicons{
+        width: 30px;
+        height: 30px;
+        margin-left: 5px;
+      }
+      .ficon{
+        height: 35px;
+        width: 35px;
+      }
+      .ticon{
+        height: 25px;
+        width: 24px;
+      }
+      .iicon{
+        height: 20px;
+        width: 20px;
+        margin-left: 10px;
+      }
+      
+      @media screen and (max-width:750px)
+      {
+        .smediaicons,.ficon,.ticon,.iicon{
+          display: none;
+
+        }
+      }
+      #r-side-item{
+        /* margin-left: 300px; */
+      }
+      #aslogo
+      {
+        height: 80px;
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+     
+      /* body{
+        margin-left: 30px;
+        margin-right: 30px;
+      } */
+      #asnavmenu
+      {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin-left: 4%;
+        margin-right: 10%;
+        text-align: center;
+      }
+      /* @media only screen and (max-width: 600px) {
+        #asnavmenu {
+          width: 50%;
+          height: auto;
+        }
+      } */
+      #asnavmenu>a{
+        font-size: 20px;
+        /* display: flex;
+        justify-content: space-evenly; */
+        margin: auto;
+        
+      }
+      #asnavmenu>a:hover{
+       background-color: rgb(211, 207, 207);
+       font-size: 1.1em;
+       padding: 10px 13px;
+       border-bottom: 1px solid red;
+       
+
+      }
+      #menu-items{
+        font-size: 20px;
+      }
+      hr{
+        margin-left: 70px;
+        margin-right: 70px;
+        /* box-sizing: border-box; */
+      }
+      .line
+      {
+      border-width: 2px;
+      border-color: #111;
+      }
+    
