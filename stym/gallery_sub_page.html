@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="newsdetails.css">
+    <title>Sub-Gallery</title>
+    <style>
+   
+    </style>
+</head>
+<body>
+    <div id="gallery-parent">
+        <div id="div1">
+            <h1 id="heading">In Pictures | TRS protest in Delhi</h1>
+            <h4 style="color: red; text-transform: uppercase;">Deccan chronicle</h3>
+            <h4 id="published">Published : </h4>
+            <div id="logo_div">
+                <img class="logo-icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbfZnMIU0LQ7AhFVoAx5UDa7ZeIjPDiLrO_A&usqp=CAU" alt="">
+                <img class="logo-icon" id="fb" src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_facebook-512.png" alt="">
+                <img class="logo-icon" id="twt" src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_twitter-512.png" alt="">
+                <img class="logo-icon" id="wa" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png" alt="">
+                <img class="logo-icon" id="share" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAuD6xR34VOXH7uuNR-JIdbJoVFO-4TRc1w&usqp=CAU" alt="">
+            </div>
+        </div>
+     <h2>Tag : <span id="tag"></span></h2>
+        <div id="div2">
+            <div id="div2-left">
+                <img  id="side_img">
+
+            </div>
+            <div id="div2-right">
+                <h4>
+
+                </h4>
+                <hr style="color: white;">
+            </div>
+
+        </div>
+
+        <!-- <div id="div3">
+            <div id="div3-left">
+                <h4>
+                                            
+                    Telangana Chief Minister K Chandrashekhar Rao sat on 
+                    a dharna for one-and-a-half hours at Delhi on Monday, 
+                    and set a 24-hour deadline to the Centre to announce
+                    its decision on the Telangana government's 
+                    demand that it
+                    procure all the paddy produced in the state in the rabi season. (Telangana CM KCR and BKU leader Rakesh Singh Tikait during the protest at Telangana Bhavan in Delhi- DC Image)
+            </h4>
+            <hr>
+            </div>
+            <div id="div3-right">
+             
+            </div>
+        </div> -->
+           
+
+
+    </div>
+
+
+</body>
+</html>
+<script>
+
+    let newsData=JSON.parse(localStorage.getItem("detailNews")) 
+console.log(newsData)
+let tag= document.getElementById("tag")
+    tag.innerHTML=newsData.author
+
+let heading= document.getElementById("heading")
+heading.innerText=newsData.title
+
+let published= document.getElementById("published")
+published.innerText="Published : "+ newsData.publishedAt
+
+let image = document.getElementById("side_img")
+image.src=newsData.urlToImage;
+
+let newsDesc=document.getElementById("div2-right");
+newsDesc.innerText=newsData.title+" "+newsData.description+" "+newsData.title+" "+newsData.description+" "+newsData.content;
+</script>
