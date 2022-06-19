@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nation</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/world.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/header.css">
+</head>
+<body>
+    <div id="asheader"></div>
+    <div id="navbar"></div>
+
+    <!-- Upper Part -->
+        <div id="outerDiv">
+            <div id="leftDiv">
+                <h2>NATION</h2>
+            </div>
+            <div id="middleDiv"></div>
+            <div id="rightDiv">
+                <div id="topEmptyDiv"></div>
+                <div id="bottomDiv">
+                    <h2>MOST POPULAR</h2>
+                </div>
+            </div>
+        </div>
+       <!-- LOWER PART -->
+
+        <!-- galary  -->
+     <div id="galary">
+        <div class="f_galary">
+             <h2>GALLERY</h2>
+        </div>
+        <div class="s_galary">
+             <h2>MORE GALLERIES</h2>
+        </div>
+   </div>
+
+   <!-- politics  -->
+   <div id="p_politics">
+    <h2>POLITICS</h2>
+    <div id="politics">
+    
+    </div>
+  </div>
+
+  <!-- CURRENT AFFAIRS  -->
+  <div id="p_affairs">
+    <h2>CURRENT AFFAIRS</h2>
+    <div id="u_affairs">
+    
+    </div>
+    <div id="l_affairs">
+    
+    </div>
+  </div>
+     <!-- crime  -->
+     <div id="p_crime">
+        <h2>CRIME</h2>
+        <div id="crime">
+        
+        </div>
+       </div>
+       <!-- others -->
+       <div id="p_other">
+        <h2> IN OTHER NEWS</h2>
+        <div id="u_other">
+        
+        </div>
+        <div id="l_other">
+        
+        </div>
+      </div>
+
+    </body>
+    <footer id="as_footer"></footer>
+    <script type="module">
+    
+        ///// UPPER JS//////
+    
+            import {fetchData} from "./components/index.js"
+            import {appendData,showDataM,showDataR} from "./components/display.js"
+    
+            // const apikey3=`d5517085875846b9ba2c2cbb522dc5d4`
+            // const apikey3=`a4b263da6c6c4f1ab7f29e452bc9d108`
+            // const apikey3=`5de76b328d6d4903ba81b3dd648ff3ba`
+            const apikey3=`a4b263da6c6c4f1ab7f29e452bc9d108`
+    
+            let query="india"
+            let query2="indian protests"
+            let query3="indian politics"
+    
+            let url2=`https://newsapi.org/v2/everything?q=${query}&apikey=${apikey3}`
+            let url3=`https://newsapi.org/v2/everything?q=${query3}&apikey=${apikey3}`
+            let url4=`https://newsapi.org/v2/everything?q=${query2}&apikey=${apikey3}`
+    
+            let data=await fetchData(url2)
+            let dataM=await fetchData(url3)
+            let dataR=await fetchData(url4)
+        ///left part
+       let display=document.getElementById("leftDiv")
+       appendData(data.articles,display)
+        
+        ////middle part
+        
+            let container=document.getElementById("middleDiv")
+            showDataM(dataM.articles,container)
+    
+        ////right part
+            
+        let containerR=document.getElementById("bottomDiv")
+        showDataR(dataR.articles,containerR)
+    
+            //console.log(data)
+    
+        /////BOTTOM JS//////
+        import {getFetchData,append,typeAppend,lowAppend,galary_s_append,galary_f_append} from "./components/fetch.js"
+
+        // const apikey3="25b04ade42f64810b66bdd7ebf4be413"
+        //const apikey3="18556a0d96b949718b817df3a8e3b6d5"
+        // const apikey3="6aa74a37541a4b0c88dbe661ec2f72c4"
+
+        let galary = async() => {
+            const gal_url=`https://newsapi.org/v2/everything?q=in&q=politics&apiKey=${apikey3}`
+
+
+            let data=await getFetchData(gal_url);
+
+            let box=document.querySelector(".f_galary")
+            galary_f_append(data,box)
+
+            let container=document.querySelector(".s_galary")
+            galary_s_append(data,container)
+            
+        }
+        galary()
+
+
+        //   ####### politics ######### 
+
+        let politics_func =async () =>{
+            const poli_url = `https://newsapi.org/v2/everything?q=indian%20politics&apiKey=${apikey3}`
+
+            let data =await getFetchData(poli_url)
+
+            let container=document.getElementById("politics")
+            append(data,container)
+        }
+        politics_func()
+
+        // ########## current affairs ############## 
+
+        let affairs_func = async () =>{
+            const affairs_url=`https://newsapi.org/v2/everything?q=indian%20current%20affairs&apiKey=${apikey3}`
+
+            let data = await getFetchData(affairs_url)
+
+            let box = document.getElementById("u_affairs");
+            typeAppend(data,box)
+            let container = document.getElementById("l_affairs");
+            lowAppend(data,container)
+        }
+        affairs_func()
+
+        // ####### crime ######## 
+
+        let crime_func =async () =>{
+            const crime_url = `https://newsapi.org/v2/everything?q=indian%20crime&apiKey=${apikey3}`
+
+            let data =await getFetchData(crime_url)
+
+            let container=document.getElementById("crime")
+            append(data,container)
+        }
+        crime_func()
+
+        // ######## other ####### 
+
+        let other_func = async () =>{
+            const other_url=`https://newsapi.org/v2/everything?q=indian%20current%20other&apiKey=${apikey3}`
+
+            let data = await getFetchData(other_url)
+
+            let box = document.getElementById("u_other");
+            typeAppend(data,box)
+            let container = document.getElementById("l_other");
+            lowAppend(data,container)
+        }
+        other_func()
+ 
+    
+    </script>
+    </html>
+    <script src="./scripts/icon.js"></script>
+<script src="./scripts/sidepanel.js"></script>
+<script type="module">
+        import { navbar } from "./comp/navbar.js";
+  import { footer } from "./comp/footer.js";
+  import { header } from "./comp/header.js";
+  let nav = (document.getElementById("navbar").innerHTML = navbar());
+  let foot = (document.getElementById("as_footer").innerHTML = footer());
+  let head = (document.getElementById("asheader").innerHTML = header());
+</script>
