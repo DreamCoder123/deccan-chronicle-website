@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/world.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/header.css">
+
+</head>
+<body>
+    <div id="asheader"></div>
+    <div id="navbar"></div>
+
+            <!-- UPPER PART -->
+                <div id="outermostDiv">
+                    <div id="leftDiv"><h2>TOP STORIES</h2>
+                        
+                    </div>
+                    <div id="middleDiv"></div>
+                    <div id="rightOuterDiv">
+                        <div id="rightTopDiv"><h2>MOST POPULAR</h2></div>
+                        <div id="rightInDiv"> <h2>CULOUMNS</h2></div>
+                    </div>
+                    
+                </div>
+                <div id="cartoonDiv">
+                    <div id="headings"><h2>CARTOON OF THE DAY</h2> <h2>COUNTER POINT</h2></div>
+                    <div id="cartoons">
+                        <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/14d64906264ee7d4b85c5e28e43757564b2160d3-tc-img-web.jpg" alt="">
+                        <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/2719dbcadec930b2bc54462ad717c3cb2dc4922f-tc-img-web.jpg" alt="">
+                    </div>
+                </div>
+                <!-- BOTTOM PART -->
+                <!-- politics  -->
+                <div id="p_south">
+                    <h2>SOUTH</h2>
+                    <div id="south">
+                    
+                    </div>
+                </div>
+
+                <!-- Entertainment  -->
+                <div id="p_enter">
+                    <h2>ENTERTAIMENT</h2>
+                    <div id="u_enter">
+                    
+                    </div>
+                    <div id="l_enter">
+                    
+                    </div>
+                </div>
+                <!-- sports  -->
+               
+                <div id="p_sports">
+                    <h2> SPORTS</h2>
+                    <div id="u_sports">
+                    
+                    </div>
+                    <div id="l_sports">
+                    
+                    </div>
+                </div>
+                <!-- LIFESTYLE  -->
+                <div id="p_style">
+                    <h2> LIFESTYLE</h2>
+                    <div id="u_style">
+                    
+                    </div>
+                    <div id="l_style">
+                    
+                    </div>
+                </div>
+                <!-- thechnology  -->
+                <div id="p_tech">
+                    <h2>TECHNOLOGY</h2>
+                    <div id="tech">
+                    
+                    </div>
+                </div>
+
+                <!-- SOUTH ENTERTAINMENT  -->
+                <div id="p_senter">
+                    <h2>SOUTH ENTERTAIMENT</h2>
+                    <div id="u_senter">
+                    
+                    </div>
+                    <div id="l_senter">
+                    
+                    </div>
+                </div>
+          <!-- WORLD  -->
+          <div id="p_world">
+          <h2>WORLD</h2>
+             <div id="u_world">
+                                
+              </div>
+               <div id="l_world">
+                                
+              </div>
+            </div>
+            <!-- Business  -->
+               <!-- SOUTH ENTERTAINMENT  -->
+                <div id="p_business">
+                <h2>BUSINESS</h2>
+               <div id="u_business">
+                     
+               </div>
+                <div id="l_business">
+                        
+              </div>
+               </div> 
+               <footer id="as_footer"></footer>
+</body>
+<script type="module">
+       
+    /////    TOP PART////
+
+       import {fetchData,showData} from "./components/index.js"
+
+        // const apikey4=`d5517085875846b9ba2c2cbb522dc5d4`
+        // const apikey4=`a4b263da6c6c4f1ab7f29e452bc9d108`
+        // const apikey4=`5de76b328d6d4903ba81b3dd648ff3ba`
+        const apikey4=`76abf9a091394214a253dfa00f1f6e2c`
+
+        let query="india"
+
+        let url=`https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apikey4}`
+        let url2=`https://newsapi.org/v2/everything?q=${query}&apikey=${apikey4}`
+        let url3=`https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apikey4}`
+        
+
+        let appendData=(arr)=>{
+            let display=document.getElementById("leftDiv")
+                for(let i=0;i<3;i++){
+                    let DIV=document.createElement("div")
+                    DIV.setAttribute("class","news")
+                    let image=document.createElement('img')
+                    let H3=document.createElement("h3")
+                    let p=document.createElement("p")
+                    let content=document.createElement("p")
+
+                    if(arr[i].urlToImage===null || arr[i].content===null){
+                        image.src=`https://ichef.bbci.co.uk/news/1024/branded_news/769C/production/_125346303_gettyimages-525158404-594x594.jpg`
+                        content.innerText=arr[i+1].content
+                        H3.innerText=arr[i].title 
+                        p.innerText=arr[i+1].description
+
+                    }else{
+                        image.src= arr[i].urlToImage
+                        H3.innerText=arr[i].title 
+                        p.innerText=arr[i].description
+                        content.innerText=arr[i].content
+                    }
+                   
+                    DIV.append(image,H3,p,content)
+                    display.append(DIV)
+
+                    DIV.addEventListener("click",()=>{
+                        storeData(arr[i])
+                    })
+                }
+                let storeData=(elem)=>{
+                    localStorage.setItem("detailNews",JSON.stringify(elem))
+                    window.location.href="newsdetails.html"
+               } 
+        }
+
+
+///for right-bottomDiv
+        let appendDataR2=(arr)=>{
+            let display=document.getElementById("rightInDiv")
+                for(let i=0;i<3;i++){
+                    let DIV=document.createElement("div")
+                    DIV.setAttribute("class","newsR2")
+                    let imageDiv=document.createElement("div")
+                    imageDiv.setAttribute("class","imageDiv")
+                    let textDiv=document.createElement("div")
+                    textDiv.setAttribute("class","textDiv")
+                    let image=document.createElement('img')
+                    let H4=document.createElement("h4")
+                    let p=document.createElement("p")
+                    let content=document.createElement("p")
+
+                    image.src= arr[i].urlToImage
+                    H4.innerText=arr[i].title 
+                    p.innerText=arr[i].description
+                    content.innerText=arr[i].content
+                    imageDiv.append(image)
+                    textDiv.append(H4,p,content)
+                    DIV.append(textDiv,imageDiv)
+                    display.append(DIV)
+                    DIV.addEventListener("click",()=>{
+                        storeData(arr[i])
+                    })
+
+                }
+                let storeData=(elem)=>{
+                    localStorage.setItem("detailNews",JSON.stringify(elem))
+                    window.location.href="newsdetails.html"
+               } 
+        }
+       
+
+
+   
+    let data=await fetchData(url)
+    let dataM=await fetchData(url)
+    let dataR=await fetchData(url2)
+    let dataR2=await fetchData(url3)
+    //console.log(dataR.articles)
+    //console.log(dataR2.articles)
+
+    
+    let container=document.getElementById("middleDiv")
+    showData(dataM.articles,container)
+    
+    
+    let showDataR=(arr,container)=>{
+    
+    for(let i=0;i<6;i++){
+        if(arr[i].urlToImage===null||arr[i].title===null){
+
+            continue;
+        }
+        let DIV=document.createElement("div")
+        DIV.setAttribute("class","newsM")
+        let image=document.createElement("img")
+        let  H5=document.createElement("h4")
+        
+        image.src=arr[i].urlToImage
+        H5.innerText=arr[i].title
+        
+
+         DIV.append(image,H5)
+         container.append(DIV)
+         DIV.addEventListener("click",()=>{
+                        storeData(arr[i])
+                    })
+
+        }
+        let storeData=(elem)=>{
+                    localStorage.setItem("detailNews",JSON.stringify(elem))
+                    window.location.href="newsdetails.html"
+               } 
+    
+    }
+   let containerR=document.getElementById("rightTopDiv")
+    showDataR(dataR.articles,containerR)
+
+    appendData(data.articles)
+    appendDataR2(dataR2.articles)
+    
+    //////// BOTTOM JS////////
+
+    
+import {getFetchData,append,typeAppend,lowAppend,galary_s_append,galary_f_append} from "./components/fetch.js"
+
+// const apikey4="95d1fbec7675485aba5f17e941467b38"
+// const apikey4="25b04ade42f64810b66bdd7ebf4be413"
+// const apikey4 ="6aa74a37541a4b0c88dbe661ec2f72c4"
+//const apikey4="af50e210239244738f2f23bf6b31bee2"
+
+//  south function  
+
+let south_func =async () =>{
+    const south_url = `https://newsapi.org/v2/everything?q=karnataka&apiKey=${apikey4}`
+
+     let data =await getFetchData(south_url)
+
+    let container=document.getElementById("south")
+    append(data,container)
+}
+south_func()
+
+// ########## entertainment ############### 
+
+let enter_func = async () =>{
+    const enter_url=`https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${apikey4}`
+
+    let data = await getFetchData(enter_url)
+
+    let box = document.getElementById("u_enter");
+    typeAppend(data,box)
+    let container = document.getElementById("l_enter");
+    lowAppend(data,container)
+}
+enter_func()
+
+// ########## entertainment ############### 
+
+let sports_func = async () =>{
+    const sports_url=`https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apikey4}`
+
+    let data = await getFetchData(sports_url)
+
+    let box = document.getElementById("u_sports");
+    typeAppend(data,box)
+    let container = document.getElementById("l_sports");
+    lowAppend(data,container)
+}
+sports_func()
+
+// ############## Lifestyle ########### 
+
+let style_func = async () =>{
+    const style_url=`https://newsapi.org/v2/everything?q=lifestyle&apiKey=${apikey4}`
+
+    let data = await getFetchData(style_url)
+
+    let box = document.getElementById("u_style");
+    typeAppend(data,box)
+    let container = document.getElementById("l_style");
+    lowAppend(data,container)
+}
+style_func()
+
+// ############## technology ########### 
+
+let tech_func =async () =>{
+    const tech_url = `https://newsapi.org/v2/everything?q=technology&apiKey=${apikey4}`
+
+     let data =await getFetchData(tech_url)
+
+    let container=document.getElementById("tech")
+    append(data,container)
+}
+tech_func()
+
+
+// ########## south entertainment ######### 
+
+let southEnter_func = async () =>{
+    const enter_url=`https://newsapi.org/v2/everything?q=tollywood&apiKey=${apikey4}`
+
+    let data = await getFetchData(enter_url)
+
+    let box = document.getElementById("u_senter");
+    typeAppend(data,box)
+    let container = document.getElementById("l_senter");
+    lowAppend(data,container)
+}
+southEnter_func()
+
+// ############### world ########### 
+
+let world_func = async () =>{
+    const world_url=`https://newsapi.org/v2/everything?q=world&apiKey=${apikey4}`
+
+    let data = await getFetchData(world_url)
+
+    let box = document.getElementById("u_world");
+    typeAppend(data,box)
+    let container = document.getElementById("l_world");
+    lowAppend(data,container)
+}
+world_func()
+
+// ########### businesss ############# 
+let business_func = async () =>{
+    const business_url=`https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apikey4}`
+
+    let data = await getFetchData(business_url)
+
+    let box = document.getElementById("u_business");
+    typeAppend(data,box)
+    let container = document.getElementById("l_business");
+    lowAppend(data,container)
+}
+business_func()
+</script>
+</html>
+<script src="./scripts/icon.js"></script>
+<script src="./scripts/sidepanel.js"></script>
+<script type="module">
+        import { navbar } from "./comp/navbar.js";
+  import { footer } from "./comp/footer.js";
+  import { header } from "./comp/header.js";
+  let nav = (document.getElementById("navbar").innerHTML = navbar());
+  let foot = (document.getElementById("as_footer").innerHTML = footer());
+  let head = (document.getElementById("asheader").innerHTML = header());
+</script>
