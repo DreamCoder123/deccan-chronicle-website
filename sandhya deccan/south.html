@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/world1.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/header.css">
+</head>
+<body>
+    <!-- Upper Part -->
+    <div id="asheader"></div>
+    <div id="navbar"></div>
+
+        <div id="outerDiv">
+            <div id="leftDiv">
+                <h2>SOUTH</h2>
+            </div>
+            <div id="middleDiv"></div>
+            <div id="rightDiv">
+                <div id="topEmptyDiv"></div>
+                <div id="bottomDiv">
+                    <h2>MOST POPULAR</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Part -->
+
+     <!-- telengana  -->
+   <div id="p_telengana">
+    <h2>TELENGANA</h2>
+    <div id="telengana">
+    
+    </div>
+   </div>
+
+      <!-- andra_pradesh  -->
+      <div id="p_andrapradesh">
+        <h2>ANDRA PRADESH</h2>
+        <div id="u_andrapradesh">
+        
+        </div>
+        <div id="l_andrapradesh">
+        
+        </div>
+    </div>
+
+      <!-- tamilnadu  -->
+   <div id="p_tamilnadu">
+    <h2>TAMIL NADU</h2>
+    <div id="tamilnadu">
+    </div>
+   </div>
+
+       <!-- karnatak  -->
+       <div id="p_karnataka">
+        <h2>KARNATAKA</h2>
+        <div id="u_karnataka">
+        
+        </div>
+        <div id="l_karnataka">
+        
+        </div>
+    </div>
+
+    <!-- kelara  -->
+    <div id="p_kerala">
+        <h2>KERALA</h2>
+        <div id="kerala">
+        </div>
+    </div>
+        
+  <footer id="as_footer"></footer>  
+</body>
+<script type="module">
+
+    ///// UPPER JS//////
+
+        import {fetchData} from "./components/index.js"
+        import {appendData,showDataM,showDataR} from "./components/display.js"
+
+        // const apikey=`d5517085875846b9ba2c2cbb522dc5d4`
+        // const apikey2=`a4b263da6c6c4f1ab7f29e452bc9d108`
+       // const apikey2=`76abf9a091394214a253dfa00f1f6e2c`
+        const apikey2="95d1fbec7675485aba5f17e941467b38"
+    // const apikey2="6aa74a37541a4b0c88dbe661ec2f72c4"
+
+        let query="hyderabad"
+        let query2="kanchipuram"
+        let query3="chennai"
+
+        let url2=`https://newsapi.org/v2/everything?q=${query}&apikey=${apikey2}`
+        let url3=`https://newsapi.org/v2/everything?q=${query3}&apikey=${apikey2}`
+        let url4=`https://newsapi.org/v2/everything?q=${query2}&apikey=${apikey2}`
+
+        let data=await fetchData(url2)
+        let dataM=await fetchData(url3)
+        let dataR=await fetchData(url4)
+    ///left part
+   let display=document.getElementById("leftDiv")
+   appendData(data.articles,display)
+    
+    ////middle part
+    
+        let container=document.getElementById("middleDiv")
+        showDataM(dataM.articles,container)
+
+    ////right part
+        
+    let containerR=document.getElementById("bottomDiv")
+    showDataR(dataR.articles,containerR)
+
+        //console.log(data)
+
+    /////BOTTOM JS//////
+    
+    
+
+import {getFetchData,append,typeAppend,lowAppend,galary_s_append,galary_f_append} from "./components/fetch.js"
+
+// const key="35ccd83f5f7441178bde2e1a14252cc8"
+
+let telengana_func =async () =>{
+    const telengana_url = `https://newsapi.org/v2/everything?q=telengana%27&apiKey=${apikey2}`
+
+     let data =await getFetchData(telengana_url)
+
+    let container=document.getElementById("telengana")
+    append(data,container)
+}
+telengana_func()
+
+
+let andrapradesh_func = async () =>{
+    const andrapradesh_url=`https://newsapi.org/v2/everything?q=andhra pradesh&apiKey=${apikey2}`
+
+    let data = await getFetchData(andrapradesh_url)
+
+    let box = document.getElementById("u_andrapradesh");
+    typeAppend(data,box)
+    let container = document.getElementById("l_andrapradesh");
+    lowAppend(data,container)
+}
+andrapradesh_func()
+
+
+
+let tamilnadu_func =async () =>{
+    const tele_url = `https://newsapi.org/v2/everything?q=tamil nadu&apiKey=${apikey2}`
+
+     let data =await getFetchData(tele_url)
+
+    let container=document.getElementById("tamilnadu")
+    append(data,container)
+}
+tamilnadu_func()
+
+
+let karnataka_func = async () =>{
+    const karnataka_url=`https://newsapi.org/v2/everything?q=kannada&apiKey=${apikey2}`
+
+    let data = await getFetchData(karnataka_url)
+
+    let box = document.getElementById("u_karnataka");
+    typeAppend(data,box)
+    let container = document.getElementById("l_karnataka");
+    lowAppend(data,container)
+}
+karnataka_func()
+
+let kerala_func =async () =>{
+    const kerala_url = `https://newsapi.org/v2/everything?q=kerala&apiKey=${apikey2}`
+
+     let data =await getFetchData(kerala_url)
+
+    let container=document.getElementById("kerala")
+    append(data,container)
+}
+kerala_func()
+
+</script>
+</html>
+<script src="./scripts/icon.js"></script>
+<script src="./scripts/sidepanel.js"></script>
+<script type="module">
+        import { navbar } from "./comp/navbar.js";
+  import { footer } from "./comp/footer.js";
+  import { header } from "./comp/header.js";
+  let nav = (document.getElementById("navbar").innerHTML = navbar());
+  let foot = (document.getElementById("as_footer").innerHTML = footer());
+  let head = (document.getElementById("asheader").innerHTML = header());
+</script>

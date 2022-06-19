@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/world1.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/header.css">
+</head>
+<body>
+
+    <div id="asheader">
+    </div>
+    <div id="navbar">
+    </div> 
+     <!-- UPPER PART -->
+
+        <div id="outerDiv">
+            <div id="leftDiv">
+                <h2>LIFESTYLE</h2>
+            </div>
+            <div id="middleDiv"></div>
+            <div id="rightDiv">
+                <div id="topEmptyDiv"></div>
+                <div id="bottomDiv">
+                    <h2>MOST POPULAR</h2>
+                </div>
+            </div>
+        </div>
+       
+        <!-- BOTTOM PART -->
+
+        <!-- galary  -->
+    <div id="galary">
+        <div class="f_galary">
+             <h2>GALLERY</h2>
+        </div>
+        <div class="s_galary">
+             <h2>MORE GALLERIES</h2>
+        </div>
+   </div>
+
+      <!-- fashion and beauty  -->
+      <div id="p_fashion">
+        <h2>FASHION AND BEAUTY</h2>
+        <div id="fashion">
+        </div>
+       </div>
+
+           <!-- health  -->
+           <div id="p_health">
+            <h2>HEALTH AND WELLBEING</h2>
+            <div id="u_health">
+            </div>
+            <div id="l_health">
+            </div>
+        </div>
+
+        <!-- CULTURE AND SOCIETY  -->
+      <div id="p_culture">
+        <h2>CULTURE AND SOCIETY</h2>
+        <div id="culture">
+        </div>
+       </div>
+
+            <!-- food  -->
+            <div id="p_food">
+            <h2>FOOD AND RECIPES</h2>
+            <div id="u_food">
+            </div>
+            <div id="l_food">
+            </div>
+           </div>
+
+        <!-- SEX AND RELATIONSHIP  -->
+        <div id="p_relat">
+            <h2>SEX AND RELATIONSHIP</h2>
+            <div id="relat">
+            </div>
+        </div>
+
+           <!-- environment  -->
+           <div id="p_env">
+            <h2>ENVIRONMENT</h2>
+            <div id="u_env">
+            </div>
+            <div id="l_env">
+            </div>
+           </div>
+
+            <!-- BOOKS AND ART  -->
+        <div id="p_book">
+            <h2>BOOKS AND ART</h2>
+            <div id="book">
+            </div>
+        </div>
+
+           <!-- TRAVEL  -->
+           <div id="p_trv">
+            <h2>TRAVEL</h2>
+            <div id="u_trv">
+            </div>
+            <div id="l_trv">
+            </div>
+           </div>
+
+           <!-- VIRAL AND TRENDING -->
+        <div id="p_viral">
+            <h2>VIRAL AND TRENDING</h2>
+            <div id="viral">
+            </div>
+        </div>
+
+          <!-- focus  -->
+          <div id="p_focus">
+            <h2>IN FOCUS</h2>
+            <div id="u_focus">
+            </div>
+            <div id="l_focus">
+            </div>
+           </div>
+
+        
+           <footer id="as_footer"> 
+</body>
+
+
+<script type="module">
+    
+    ////UPPER JS//////
+  
+        import {fetchData} from "./components/index.js"
+        import {appendData,showDataM,showDataR} from "./components/display.js"
+
+        //const apikey2=`d5517085875846b9ba2c2cbb522dc5d4`
+        //const apikey2=`a4b263da6c6c4f1ab7f29e452bc9d108`
+         // const apikey2=`bf6c4661eaeb4853a23a5aa81dd3b8cf`
+         //const apikey2=`5de76b328d6d4903ba81b3dd648ff3ba`
+         const apikey2=`a4b263da6c6c4f1ab7f29e452bc9d108`
+
+        let query="india lifestyle"
+        let query2="high lifestyle"
+        let query3="local lifestyle"
+
+        let url2=`https://newsapi.org/v2/everything?q=${query}&apikey=${apikey2}`
+        let url3=`https://newsapi.org/v2/everything?q=${query3}&apikey=${apikey2}`
+        let url4=`https://newsapi.org/v2/everything?q=${query2}&apikey=${apikey2}`
+
+        let data=await fetchData(url2)
+        let dataM=await fetchData(url3)
+        let dataR=await fetchData(url4)
+    ///left part
+   let display=document.getElementById("leftDiv")
+   appendData(data.articles,display)
+    
+    ////middle part
+    
+        let container=document.getElementById("middleDiv")
+        showDataM(dataM.articles,container)
+
+    ////right part
+        
+    let containerR=document.getElementById("bottomDiv")
+    showDataR(dataR.articles,containerR)
+
+        //console.log(data)
+
+     /////BOTTOM JS//////
+     
+     
+  const key="6aa74a37541a4b0c88dbe661ec2f72c4"
+
+
+import {getFetchData,append,typeAppend,lowAppend,galary_s_append,galary_f_append} from "./components/fetch.js"
+
+
+  let galary = async() => {
+    const gal_url = `https://newsapi.org/v2/everything?q=indian%20girls&apiKey=${apikey2}`
+
+     let data=await getFetchData(gal_url);
+
+     let box=document.querySelector(".f_galary")
+     galary_f_append(data,box)
+
+     let container=document.querySelector(".s_galary")
+     galary_s_append(data,container)
+     
+}
+  galary()
+
+  let fashion_func =async () =>{
+    const fashion_url = `https://newsapi.org/v2/everything?q=fashion&apiKey=${apikey2}`
+
+     let data =await getFetchData(fashion_url)
+
+    let container=document.getElementById("fashion")
+    append(data,container)
+}
+fashion_func()
+
+let health_func = async () =>{
+    const health_url=`https://newsapi.org/v2/everything?q=wellbeing&apiKey=${apikey2}`
+
+    let data = await getFetchData(health_url)
+
+    let box = document.getElementById("u_health");
+    typeAppend(data,box)
+    let container = document.getElementById("l_health");
+    lowAppend(data,container)
+}
+health_func()
+
+let culture_func =async () =>{
+    const culture_url = `https://newsapi.org/v2/everything?q=indian%20nature&apiKey=${apikey2}`
+
+     let data =await getFetchData(culture_url)
+
+    let container=document.getElementById("culture")
+    append(data,container)
+}
+culture_func()
+
+
+let food_func = async () =>{
+    const food_url=`https://newsapi.org/v2/everything?q=food&apiKey=${apikey2}`
+
+    let data = await getFetchData(food_url)
+
+    let box = document.getElementById("u_food");
+    typeAppend(data,box)
+    let container = document.getElementById("l_food");
+    lowAppend(data,container)
+}
+food_func()
+
+let relat_func =async () =>{
+    const relat_url = `https://newsapi.org/v2/everything?q=friendship%20and%20relationship&apiKey=${apikey2}`
+
+     let data =await getFetchData(relat_url)
+
+    let container=document.getElementById("relat")
+    append(data,container)
+}
+relat_func()
+
+let env_func = async () =>{
+    const env_url=`https://newsapi.org/v2/everything?q=india%20weather&apiKey=${apikey2}`
+
+    let data = await getFetchData(env_url)
+
+    let box = document.getElementById("u_env");
+    typeAppend(data,box)
+    let container = document.getElementById("l_env");
+    lowAppend(data,container)
+}
+env_func()
+
+let book_func =async () =>{
+    const book_url = `https://newsapi.org/v2/everything?q=book%20and%20art&apiKey=${apikey2}`
+
+     let data =await getFetchData(book_url)
+
+    let container=document.getElementById("book")
+    append(data,container)
+}
+book_func()
+
+let trv_func = async () =>{
+    const trv_url=`https://newsapi.org/v2/everything?q=indian%20travelling&apiKey=${apikey2}`
+    let data = await getFetchData(trv_url)
+
+    let box = document.getElementById("u_trv");
+    typeAppend(data,box)
+    let container = document.getElementById("l_trv");
+    lowAppend(data,container)
+}
+trv_func()
+
+let viral_func =async () =>{
+    const viral_url = `https://newsapi.org/v2/everything?q=indian%20viral%20news&apiKey=${apikey2}`
+
+     let data =await getFetchData(viral_url)
+
+    let container=document.getElementById("viral")
+    append(data,container)
+}
+viral_func()
+
+let focus_func = async () =>{
+    const focus_url=`https://newsapi.org/v2/everything?q=indian%20in%20focus&apiKey=${apikey2}`
+    let data = await getFetchData(focus_url)
+
+    let box = document.getElementById("u_focus");
+    typeAppend(data,box)
+    let container = document.getElementById("l_focus");
+    lowAppend(data,container)
+}
+focus_func()
+
+</script>
+</html>
+<script src="./scripts/icon.js"></script>
+<script src="./scripts/sidepanel.js"></script>
+<script type="module">
+        import { navbar } from "./comp/navbar.js";
+  import { footer } from "./comp/footer.js";
+  import { header } from "./comp/header.js";
+  let nav = (document.getElementById("navbar").innerHTML = navbar());
+  let foot = (document.getElementById("as_footer").innerHTML = footer());
+  let head = (document.getElementById("asheader").innerHTML = header());
+</script>
