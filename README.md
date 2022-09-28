@@ -10,7 +10,8 @@
 ## About
 This is News Website  Where You can read any news like Political News, Business News, Economy News, Cricket News, Technology News, Social News and Other Types Of news.
 This Website is created Using API calls If you find any empty page then that will be due to api expired so don't be panic.
-We are the students of unit 3 at masai. This is the news website where we worked with 6 team members. 
+We are the students of unit 3 at masai. This is the news website where I worked with 5 other team members. 
+
 ## Deploy Link
 Netlify Link 
 https://strong-bienenstitch-7aca79.netlify.app/job.html
