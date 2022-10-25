@@ -1,11 +1,9 @@
 # deccan-chronicle-website
 
-
 ## Tech Stack
 #### HTML
 #### CSS 
 #### JAVASCRIPT
-
 
 ## About
 This is News Website  Where You can read any news like Political News, Business News, Economy News, Cricket News, Technology News, Social News and Other Types Of news.
