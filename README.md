@@ -12,7 +12,7 @@ We are the students of unit 3 at masai. This is the news website where I worked 
 
 ## Deploy Link
 Netlify Link 
-https://strong-bienenstitch-7aca79.netlify.app/job.html
+https://dreamcoder123.github.io/Deccan-Chronicle-live/
 
 ## How To Use IT
 Just Visit the website by clicking the link and If you find any empty page then that will be due to api expired so don't be panic.
